@@ -6,6 +6,7 @@ from django.urls import reverse
 import books
 from books.models.books import Book, Genre, Author, comment
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 
 
 @admin.register(Book)
@@ -16,6 +17,8 @@ class BookAdmin(admin.ModelAdmin):
     # readonly_fields = ('pages',)  # обычно для crated by и подобных
     autocomplete_fields = ('author',)
     filter_horizontal = ('author',)
+    # так можно сделать чтобы ваабще не все можно было нажать
+    list_display_links = list_display
 
     def authors_count(self, obj):
         # x = obj.author.count()  # обращается к объекту из строчки в админке(к каждому по своему)

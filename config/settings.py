@@ -1,6 +1,8 @@
 
 from datetime import timedelta
 import os
+from re import A
+from telnetlib import AUTHENTICATION
 import environ
 from pathlib import Path
 
@@ -10,6 +12,7 @@ environ.Env.read_env(env.str(root(), '.env'))
 
 
 BASE_DIR = root()
+
 
 SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
@@ -31,12 +34,14 @@ INSTALLED_APPS += [
     'corsheaders',
     'djoser',
     'drf_spectacular',
+    'phonenumber_field',
 ]
 
 # APPS
 INSTALLED_APPS += [
     'api',
     'common',
+    'users',
     'books',
 ]
 
@@ -98,6 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+AUTH_USER_MODEL = 'users.User'
+AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend',)
 #################################
 # REST
 #################################
