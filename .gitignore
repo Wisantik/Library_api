@@ -1,0 +1,3 @@
+*/migrations/*
+!*/migrations/__init__.py
+#NOTE - топопвая штука для миграций, всегда юзать

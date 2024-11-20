@@ -1,0 +1,32 @@
+[2024-10-05 14:07:40,276: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-10-05 14:07:40,284: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-10-05 14:07:40,285: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-10-05 14:07:40,289: INFO/MainProcess] mingle: searching for neighbors
+[2024-10-05 14:07:41,298: INFO/MainProcess] mingle: all alone
+[2024-10-05 14:07:41,307: INFO/MainProcess] celery@6a7af9838454 ready.
+[2024-10-18 14:23:16,337: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-10-18 14:23:18,846: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-10-18 14:23:18,848: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-10-18 14:23:18,850: INFO/MainProcess] mingle: searching for neighbors
+[2024-10-18 14:23:19,858: INFO/MainProcess] mingle: all alone
+[2024-10-18 14:23:19,867: INFO/MainProcess] celery@6a7af9838454 ready.

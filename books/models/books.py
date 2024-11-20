@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 from django.contrib.auth import get_user_model
 
+from common.models.mixins import InfoMixin
+
 User = get_user_model()
 
 
@@ -40,7 +42,7 @@ class Author(models.Model):
         return reverse("Author_detail", kwargs={"pk": self.pk})
 
 
-class Book(models.Model):
+class Book(InfoMixin):
     name = models.CharField(("Название книги"), max_length=255)
     date = models.DateField(("дата создания книги"),
                             auto_now=False, auto_now_add=False, null=True, blank=True)
@@ -61,13 +63,10 @@ class Book(models.Model):
         return reverse("Book_detail", kwargs={"pk": self.pk})
 
 
-class comment(models.Model):
-    User = models.ForeignKey(User, verbose_name=(
-        "создатель комента"), on_delete=models.CASCADE)
-    date = models.DateField(("Дата создания комментария"),
-                            auto_now=False, auto_now_add=False)
+class comment(InfoMixin):
+
     text = models.TextField(("Текст комментария"))
-    book = models.ForeignKey(Book, verbose_name=("для какой книги комент"),
+    book = models.ForeignKey(Book,  related_name='comments', verbose_name=("для какой книги комент"),
                              on_delete=models.CASCADE)
 
     class Meta:

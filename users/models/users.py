@@ -1,11 +1,10 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
+from django.db import models, transaction
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-from users.managers import CustomUserManager
-from django.utils.translation import gettext_lazy as _
-from django.db.models.signals import post_save
 
+from users.managers import CustomUserManager
 from users.models.profile import Profile
 
 
@@ -23,16 +22,14 @@ class User(AbstractUser):
 
     class Meta:
         verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
 
     @property
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
-        return f"{self.phone_number}"
-
-# NOTE - профиль создаётся при создании пользователя автоматически, такое же можно сделать и через get_or_create
+        return f'{self.full_name} ({self.pk})'
 
 
 @receiver(post_save, sender=User)

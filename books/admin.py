@@ -19,6 +19,9 @@ class BookAdmin(admin.ModelAdmin):
     filter_horizontal = ('author',)
     # так можно сделать чтобы ваабще не все можно было нажать
     list_display_links = list_display
+    readonly_fields = (
+        'created_at', 'created_by', 'updated_at', 'updated_by'
+    )
 
     def authors_count(self, obj):
         # x = obj.author.count()  # обращается к объекту из строчки в админке(к каждому по своему)
@@ -48,8 +51,11 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(comment)
 class сommentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'book_link', 'User',)
+    list_display = ('id', 'book_link',)
     list_filter = ('book__pages',)  # заходим вглубь объекта
+    readonly_fields = (
+        'created_at', 'created_by', 'updated_at', 'updated_by'
+    )
 
     def book_link(self, obj):
         link = reverse(

@@ -1,4 +1,3 @@
-
 from django.contrib.auth.base_user import BaseUserManager
 from rest_framework.exceptions import ParseError
 
@@ -34,13 +33,15 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_active', True)
 
-        return self._create_user(email, phone_number, password, username, **extra_fields)
+        return self._create_user(
+            phone_number, email, password, username, **extra_fields
+        )
 
     def create_superuser(self, phone_number=None, email=None, password=None, username=None, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
-        # меняются эти поля
 
-        # затем в return вызывается метод который используется и для обычного юзера и для стафа
-        return self._create_user(email, phone_number, password, username, **extra_fields)
+        return self._create_user(
+            phone_number, email, password, username, **extra_fields
+        )
