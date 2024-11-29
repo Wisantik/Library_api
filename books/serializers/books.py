@@ -10,4 +10,4 @@ class BookSerializer(ExtendedModelSerializer):
     class Meta:
         model = Book
         fields = ['name', 'genres', 'pages', 'author',
-                  'comments', 'description', 'date']
+                  'comments', 'description', 'date', 'rating']

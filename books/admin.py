@@ -4,7 +4,7 @@ from django.db.models import Count
 from django.http import HttpRequest
 from django.urls import reverse
 import books
-from books.models.books import Book, Genre, Author, comment
+from books.models.books import Book, Genre, Author, Rating, comment
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
@@ -51,6 +51,21 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(comment)
 class сommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'book_link',)
+    list_filter = ('book__pages',)  # заходим вглубь объекта
+    readonly_fields = (
+        'created_at', 'created_by', 'updated_at', 'updated_by'
+    )
+
+    def book_link(self, obj):
+        link = reverse(
+            'admin:books_book_change', args=[obj.book.id]
+        )
+        return format_html('<a href="{}">{}</a>', link, obj.book)
+
+
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
     list_display = ('id', 'book_link',)
     list_filter = ('book__pages',)  # заходим вглубь объекта
     readonly_fields = (

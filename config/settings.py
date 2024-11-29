@@ -153,14 +153,14 @@ AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend',)
 # REST
 #################################
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',),
-
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAuthenticated',
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
     ],
-
+    # без антунтификации
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
@@ -172,10 +172,15 @@ REST_FRAMEWORK = {
 }
 
 
-LANGUAGE_CODE = 'ru-Ru'
+LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
+
+STATIC_URL = 'static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 ###################################
 # CORS
 ###################################
@@ -204,11 +209,11 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'ЛУЧШЕЕ В МИРЕ API ДЛЯ БИБЛЕОТЕК',
     'VERSION': '1.0.0',
     'SERVE_PERMISSIONS': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
     ],
 
     'SERVE_AUTHENTICATION': [
-        'rest_framework.authentication.BasicAuthentication'
+        # 'rest_framework.authentication.BasicAuthentication'
     ],
 
     'SWAGGER_UI_SETTINGS': {

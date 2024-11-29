@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from books import serializers
@@ -7,7 +7,7 @@ from books.models import books
 from books.serializers.commentaries import CommentariesSerializer
 from books.models.books import comment
 from books.serializers.commentaries import CommentariesSerializer
-from common.views.mixins import ExtendedGenericViewSet, CRUViewSet
+from common.views.mixins import CRUDViewSet
 from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter, OpenApiTypes
 
 
@@ -15,7 +15,7 @@ from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiPara
     parameters=[OpenApiParameter(
         name="id", type=str, location=OpenApiParameter.PATH)]
 )
-class CommentViewSet(viewsets.ViewSet):
+class CommentViewSet(CRUDViewSet):
 
     def get_serializer_class(self):
         serializer = CommentariesSerializer

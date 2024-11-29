@@ -7,4 +7,4 @@ class CommentariesSerializer(ExtendedModelSerializer):
 
     class Meta:
         model = comment
-        fields = ['book', 'text']
+        fields = ['book', 'text', 'created_by']
